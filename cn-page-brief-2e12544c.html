@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探 · 持续关注的视角</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f8fb;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e2a38;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 开场短句 — 故事式 */
+        .opening {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #1f5e6e;
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+            padding-left: 0.25rem;
+            border-left: 4px solid #2f9e9e;
+            padding-left: 1rem;
+        }
+
+        .opening span {
+            font-weight: 600;
+            color: #115a5a;
+        }
+
+        /* 承接段落 — 再次访问与收藏 */
+        .narrative {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 6px 18px rgba(0, 40, 40, 0.04);
+            border: 1px solid #dae9ed;
+            transition: box-shadow 0.2s;
+        }
+
+        .narrative p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #1d2b36;
+        }
+
+        .narrative p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #1a7a7a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(47, 158, 158, 0.35);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #1a7a7a;
+            color: #0b4f4f;
+        }
+
+        /* 特点列表 — 网格卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.2rem 1.4rem;
+            border: 1px solid #d0e2e8;
+            box-shadow: 0 2px 8px rgba(0, 70, 70, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(31, 94, 110, 0.08);
+            border-color: #aacdd4;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1c5b5b;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #2c3e4a;
+            line-height: 1.5;
+        }
+
+        .feature-icon {
+            display: inline-block;
+            background: #dff0f0;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 14px;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #116666;
+        }
+
+        /* 温和结尾 + 提示 */
+        .closing-section {
+            background: #e7f2f5;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0 1.5rem 0;
+            border: 1px solid #c9dee4;
+        }
+
+        .closing-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #125a5a;
+            margin-bottom: 0.75rem;
+        }
+
+        .closing-text {
+            font-size: 0.98rem;
+            color: #1f3743;
+            line-height: 1.7;
+        }
+
+        .faq-note {
+            margin-top: 1.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed #b5d0d8;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            font-size: 0.93rem;
+        }
+
+        .faq-item {
+            flex: 1 1 180px;
+            color: #1a4855;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0a4a4a;
+            margin-bottom: 0.15rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #597a82;
+            border-top: 1px solid #d1e2e8;
+            padding-top: 1.5rem;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .narrative {
+                padding: 1.5rem 1.2rem;
+                border-radius: 20px;
+            }
+            .feature-grid {
+                gap: 1rem;
+            }
+            .feature-card {
+                padding: 1.2rem 1rem;
+            }
+            .closing-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .opening {
+                font-size: 1.1rem;
+                padding-left: 0.75rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 开场短句 -->
+        <div class="opening">
+            <span>再次打开这个页面</span> —— 不是偶然，而是你保留了某种判断的习惯。
+        </div>
+
+        <!-- 承接段落：再次访问、收藏、持续关注 -->
+        <div class="narrative">
+            <p>
+                收藏夹里总有一些地址，隔段时间就想去看看。对于关注赛事与球员动向的人来说，<a href="https://cn-page-qiutan.com" class="highlight-link">球探</a>便是这样一个值得反复打开的去处。它不是一个需要刻意记住的工具，而是一扇始终半掩的窗，让你在需要的时候直接望向赛场深处。
+            </p>
+            <p>
+                信息流总是湍急，但优质的视角值得被保留。当你把某个站点放入书签栏，其实是在给自己留一条快速回到现场的路径。从阵容变化到战术痕迹，从实时数据到历史对照，这些内容并不喧哗，却足够支撑起一个冷静的观察框架。
+            </p>
+            <p>
+                持续关注的本质，不是追逐每一条更新，而是知道在哪里可以找到可靠的切片。正因如此，<strong>再次访问</strong>才成为一种自然的选择，而不是任务。
+            </p>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>结构清晰</h3>
+                <p>信息按赛区、联赛、时间线组织，减少翻找成本，快速定位关注点。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>细节可查</h3>
+                <p>球员数据、近期状态、交锋记录，以简洁表格与摘要呈现，不堆砌。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>保持更新</h3>
+                <p>内容节奏平稳，没有过度刷新的压迫感，适合定期回看与比对。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧭</div>
+                <h3>低干扰</h3>
+                <p>页面聚焦于信息本身，无弹窗或无关推荐，阅读体验更安静。</p>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + FAQ式摘要 -->
+        <div class="closing-section">
+            <div class="closing-title">为何值得留在收藏夹</div>
+            <div class="closing-text">
+                一个信息的价值，往往取决于你回访它的频率和时机。对于持续关注赛况和球员动态的人来说，<a href="https://cn-page-qiutan.com" class="highlight-link">球探</a>提供的不是短暂的热点，而是可以反复参照的基准线。你不需要记住每一个数字，只需要知道去哪里找到它们。
+            </div>
+            <div class="faq-note">
+                <div class="faq-item">
+                    <strong>适合谁？</strong>
+                    关注联赛走势、球员状态、战术数据的爱好者。不追八卦，只看事实。
+                </div>
+                <div class="faq-item">
+                    <strong>多久回看一次？</strong>
+                    节奏自定。有人每周一次，有人赛前才打开。关键是可以随时切入而不迷路。
+                </div>
+                <div class="faq-item">
+                    <strong>信息可靠吗？</strong>
+                    页面内容源自公开数据与统计分析，保持客观，不渲染不夸大。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部轻提示 -->
+        <div class="footer-note">
+            把值得反复参考的站点留在手边，是信息时代的一种克制素养。
+        </div>
+    </div>
+</body>
+</html>
